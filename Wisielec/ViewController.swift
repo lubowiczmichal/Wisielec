@@ -10,6 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var words:[String] = ["PIES", "KOT", "ŻYRAFA", "LEW", "NIETOPERZ", "BIZON", "ŻUBR", "NOSOROŻEC", "KANGUR", "KURA", "ORZEŁ", "IGUANA", "PAPUGA", "BŁAZENEK", "SZCZUPAK", "KARP", "WIELORYB"]
+    var toGuess:String = ""
+    var found: [Character] = []
+    var fails:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -21,6 +26,155 @@ class ViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
+    
+    
+    
+    @IBAction func refresh(_ sender: Any) {
+        LBase.isHidden = true
+        RBase.isHidden = true
+        Vertical.isHidden = true
+        Horizontal.isHidden = true
+        Support.isHidden = true
+        Line.isHidden = true
+        Head.isHidden = true
+        Body.isHidden = true
+        LArm.isHidden = true
+        RArm.isHidden = true
+        LLeg.isHidden = true
+        RLeg.isHidden = true
+        fails = 0
+        toGuess = words[Int.random(in: 0 ..< words.count)]
+        found = []
+        for _ in 0..<toGuess.count{
+            found.append("_")
+        }
+        Text.text = String(found)
+        A.isEnabled = true
+        Ą.isEnabled = true
+        B.isEnabled = true
+        C.isEnabled = true
+        Ć.isEnabled = true
+        D.isEnabled = true
+        E.isEnabled = true
+        Ę.isEnabled = true
+        F.isEnabled = true
+        G.isEnabled = true
+        H.isEnabled = true
+        I.isEnabled = true
+        J.isEnabled = true
+        K.isEnabled = true
+        L.isEnabled = true
+        Ł.isEnabled = true
+        M.isEnabled = true
+        N.isEnabled = true
+        Ń.isEnabled = true
+        O.isEnabled = true
+        Ó.isEnabled = true
+        P.isEnabled = true
+        Q.isEnabled = true
+        R.isEnabled = true
+        S.isEnabled = true
+        Ś.isEnabled = true
+        T.isEnabled = true
+        U.isEnabled = true
+        V.isEnabled = true
+        W.isEnabled = true
+        X.isEnabled = true
+        Y.isEnabled = true
+        Z.isEnabled = true
+        Ź.isEnabled = true
+        Ż.isEnabled = true
+    }
+    
+    func letterClick(letter:Character){
+        if !toGuess.contains(letter){
+            fails += 1
+        }
+        else{
+            for i in 0..<toGuess.count{
+                if toGuess[toGuess.index(toGuess.startIndex, offsetBy: i)] == letter {
+                    found[i] = letter
+                    Text.text = String(found)
+                }
+            }
+            if String(found) == toGuess{
+                Text.text = "WYGRAŁEŚ"
+                buttonsDisabled()
+            }
+        }
+        if fails == 1{
+            RBase.isHidden = false
+            LBase.isHidden = false
+        }
+        if fails == 2{
+            Vertical.isHidden = false
+        }
+        if fails == 3{
+            Support.isHidden = false
+        }
+        if fails == 4{
+            Horizontal.isHidden = false
+        }
+        if fails == 4{
+            Line.isHidden = false
+        }
+        if fails == 5{
+            Head.isHidden = false
+        }
+        if fails == 6{
+            Body.isHidden = false
+        }
+        if fails == 7{
+            RArm.isHidden = false
+            LArm.isHidden = false
+        }
+        if fails == 8{
+            RLeg.isHidden = false
+            LLeg.isHidden = false
+            Text.text = "PRZEGRANA"
+            buttonsDisabled()
+        }
+    }
+    
+    
+    func buttonsDisabled(){
+        A.isEnabled = false
+        Ą.isEnabled = false
+        B.isEnabled = false
+        C.isEnabled = false
+        Ć.isEnabled = false
+        D.isEnabled = false
+        E.isEnabled = false
+        Ę.isEnabled = false
+        F.isEnabled = false
+        G.isEnabled = false
+        H.isEnabled = false
+        I.isEnabled = false
+        J.isEnabled = false
+        K.isEnabled = false
+        L.isEnabled = false
+        Ł.isEnabled = false
+        M.isEnabled = false
+        N.isEnabled = false
+        Ń.isEnabled = false
+        O.isEnabled = false
+        Ó.isEnabled = false
+        P.isEnabled = false
+        Q.isEnabled = false
+        R.isEnabled = false
+        S.isEnabled = false
+        Ś.isEnabled = false
+        T.isEnabled = false
+        U.isEnabled = false
+        V.isEnabled = false
+        W.isEnabled = false
+        X.isEnabled = false
+        Y.isEnabled = false
+        Z.isEnabled = false
+        Ź.isEnabled = false
+        Ż.isEnabled = false
+    }
+    @IBOutlet weak var Text: UILabel!
     
     @IBOutlet weak var LBase: UIImageView!
     @IBOutlet weak var RBase: UIImageView!
@@ -70,147 +224,147 @@ class ViewController: UIViewController {
     @IBOutlet weak var Z: UIButton!
     @IBOutlet weak var Ź: UIButton!
     @IBOutlet weak var Ż: UIButton!
-    func check(litera:Character){
-    }
+    
+  
     
     @IBAction func A(_ sender: Any) {
-        check(litera: "A")
+        letterClick(letter: "A")
         A.isEnabled = false
     }
     @IBAction func Ą(_ sender: Any) {
-        check(litera: "Ą")
+        letterClick(letter: "Ą")
         Ą.isEnabled = false
     }
     @IBAction func B(_ sender: Any) {
-        check(litera: "B")
+        letterClick(letter: "B")
         B.isEnabled = false
     }
     @IBAction func C(_ sender: Any) {
-        check(litera: "C")
+        letterClick(letter: "C")
         C.isEnabled = false
     }
     @IBAction func Ć(_ sender: Any) {
-        check(litera: "Ć")
+        letterClick(letter: "Ć")
         Ć.isEnabled = false
     }
     @IBAction func D(_ sender: Any) {
-        check(litera: "D")
+        letterClick(letter: "D")
         D.isEnabled = false
     }
     @IBAction func E(_ sender: Any) {
-        check(litera: "E")
+        letterClick(letter: "E")
         E.isEnabled = false
     }
     @IBAction func Ę(_ sender: Any) {
-        check(litera: "Ę")
+        letterClick(letter: "Ę")
         Ę.isEnabled = false
     }
     @IBAction func F(_ sender: Any) {
-        check(litera: "F")
+        letterClick(letter: "F")
         F.isEnabled = false
     }
     @IBAction func G(_ sender: Any) {
-        check(litera: "G")
+        letterClick(letter: "G")
         G.isEnabled = false
     }
     @IBAction func H(_ sender: Any) {
-        check(litera: "H")
+        letterClick(letter: "H")
         H.isEnabled = false
     }
     @IBAction func I(_ sender: Any) {
-        check(litera: "I")
+        letterClick(letter: "I")
         I.isEnabled = false
     }
     @IBAction func J(_ sender: Any) {
-        check(litera: "J")
+        letterClick(letter: "J")
         J.isEnabled = false
     }
     @IBAction func K(_ sender: Any) {
-        check(litera: "K")
+        letterClick(letter: "K")
         K.isEnabled = false
     }
     @IBAction func L(_ sender: Any) {
-        check(litera: "L")
+        letterClick(letter: "L")
         L.isEnabled = false
     }
     @IBAction func Ł(_ sender: Any) {
-        check(litera: "Ł")
+        letterClick(letter: "Ł")
         Ł.isEnabled = false
     }
     @IBAction func M(_ sender: Any) {
-        check(litera: "M")
+        letterClick(letter: "M")
         M.isEnabled = false
     }
     @IBAction func N(_ sender: Any) {
-        check(litera: "N")
+        letterClick(letter: "N")
         N.isEnabled = false
     }
     @IBAction func Ń(_ sender: Any) {
-        check(litera: "Ń")
+        letterClick(letter: "Ń")
         Ń.isEnabled = false
     }
     @IBAction func O(_ sender: Any) {
-        check(litera: "O")
+        letterClick(letter: "O")
         O.isEnabled = false
     }
     @IBAction func Ó(_ sender: Any) {
-        check(litera: "Ó")
+        letterClick(letter: "Ó")
         Ó.isEnabled = false
     }
     @IBAction func P(_ sender: Any) {
-        check(litera: "P")
+        letterClick(letter: "P")
         P.isEnabled = false
     }
     @IBAction func Q(_ sender: Any) {
-        check(litera: "Q")
+        letterClick(letter: "Q")
         Q.isEnabled = false
     }
     @IBAction func R(_ sender: Any) {
-        check(litera: "R")
+        letterClick(letter: "R")
         R.isEnabled = false
     }
     @IBAction func S(_ sender: Any) {
-        check(litera: "S")
+        letterClick(letter: "S")
         S.isEnabled = false
     }
     @IBAction func Ś(_ sender: Any) {
-        check(litera: "Ś")
+        letterClick(letter: "Ś")
         Ś.isEnabled = false
     }
     @IBAction func T(_ sender: Any) {
-        check(litera: "T")
+        letterClick(letter: "T")
         T.isEnabled = false
     }
     @IBAction func U(_ sender: Any) {
-        check(litera: "U")
+        letterClick(letter: "U")
         U.isEnabled = false
     }
     @IBAction func V(_ sender: Any) {
-        check(litera: "V")
+        letterClick(letter: "V")
         V.isEnabled = false
     }
     @IBAction func W(_ sender: Any) {
-        check(litera: "W")
+        letterClick(letter: "W")
         W.isEnabled = false
     }
     @IBAction func X(_ sender: Any) {
-        check(litera: "X")
+        letterClick(letter: "X")
         X.isEnabled = false
     }
     @IBAction func Y(_ sender: Any) {
-        check(litera: "Y")
+        letterClick(letter: "Y")
         Y.isEnabled = false
     }
     @IBAction func Z(_ sender: Any) {
-        check(litera: "Z")
+        letterClick(letter: "Z")
         Z.isEnabled = false
     }
     @IBAction func Ź(_ sender: Any) {
-        check(litera: "Ź")
+        letterClick(letter: "Ź")
         Ź.isEnabled = false
     }
     @IBAction func Ż(_ sender: Any) {
-        check(litera: "Ż")
+        letterClick(letter: "Ż")
         Ż.isEnabled = false
     }
 }
