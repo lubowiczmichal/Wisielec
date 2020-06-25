@@ -13,6 +13,7 @@
 		90629E3824A40CFA0005CC1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90629E3624A40CFA0005CC1C /* Main.storyboard */; };
 		90629E3A24A40CFE0005CC1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90629E3924A40CFE0005CC1C /* Assets.xcassets */; };
 		90629E3D24A40CFE0005CC1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90629E3B24A40CFE0005CC1C /* LaunchScreen.storyboard */; };
+		90CF959524A4FF5700C8BCD1 /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90CF959424A4FF5700C8BCD1 /* Game.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		90629E3924A40CFE0005CC1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90629E3C24A40CFE0005CC1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90629E3E24A40CFE0005CC1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90CF959424A4FF5700C8BCD1 /* Game.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				90629E3924A40CFE0005CC1C /* Assets.xcassets */,
 				90629E3B24A40CFE0005CC1C /* LaunchScreen.storyboard */,
 				90629E3E24A40CFE0005CC1C /* Info.plist */,
+				90CF959424A4FF5700C8BCD1 /* Game.storyboard */,
 			);
 			path = Wisielec;
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90CF959524A4FF5700C8BCD1 /* Game.storyboard in Resources */,
 				90629E3D24A40CFE0005CC1C /* LaunchScreen.storyboard in Resources */,
 				90629E3A24A40CFE0005CC1C /* Assets.xcassets in Resources */,
 				90629E3824A40CFA0005CC1C /* Main.storyboard in Resources */,
@@ -295,7 +299,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.michal.Wisielec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -314,7 +318,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.michal.Wisielec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
