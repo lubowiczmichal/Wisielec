@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9054839324A609AA00A2AD59 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9054839224A609AA00A2AD59 /* Settings.storyboard */; };
 		90629E3124A40CFA0005CC1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90629E3024A40CFA0005CC1C /* AppDelegate.swift */; };
 		90629E3324A40CFA0005CC1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90629E3224A40CFA0005CC1C /* SceneDelegate.swift */; };
 		90629E3524A40CFA0005CC1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90629E3424A40CFA0005CC1C /* ViewController.swift */; };
@@ -18,7 +17,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9054839224A609AA00A2AD59 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		90629E2D24A40CFA0005CC1C /* Wisielec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wisielec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90629E3024A40CFA0005CC1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90629E3224A40CFA0005CC1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 				90629E3024A40CFA0005CC1C /* AppDelegate.swift */,
 				90629E3224A40CFA0005CC1C /* SceneDelegate.swift */,
 				90629E3424A40CFA0005CC1C /* ViewController.swift */,
-				9054839224A609AA00A2AD59 /* Settings.storyboard */,
 				90629E3624A40CFA0005CC1C /* Main.storyboard */,
 				90629E3924A40CFE0005CC1C /* Assets.xcassets */,
 				90629E3B24A40CFE0005CC1C /* LaunchScreen.storyboard */,
@@ -135,7 +132,6 @@
 				90629E3D24A40CFE0005CC1C /* LaunchScreen.storyboard in Resources */,
 				90629E3A24A40CFE0005CC1C /* Assets.xcassets in Resources */,
 				90629E3824A40CFA0005CC1C /* Main.storyboard in Resources */,
-				9054839324A609AA00A2AD59 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

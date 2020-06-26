@@ -8,32 +8,64 @@
 
 import UIKit
 
+struct MyVariables {
+    static var words:[String] = []
+    static var level:String = ""
+}
+
+
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    var categories = ["Rośliny", "Zwierzęta", "Planety"]
+    var levels = ["Łatwy", "Normalny", "Trudny"]
     
-    var categories = ["Zwierzęta", "Rośliny", "Planety"]
+    @IBOutlet weak var cat: UIPickerView!
+    @IBOutlet weak var lvl: UIPickerView!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categories.count
+        if pickerView.tag == 1 {
+            return  categories.count
+        }
+        else{
+            return  levels.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return categories[row]
+        if pickerView.tag == 1{
+            return  categories[row]
+        }
+        else{
+            return  levels[row]
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        Lebel.text = categories[row]
+        if pickerView.tag == 1{
+            switch  categories[row] {
+            case "Rośliny":
+                MyVariables.words = plants
+            case "Zwierzęta":
+                MyVariables.words = animals
+            default:
+                MyVariables.words = planets
+            }
+        }
+        else{
+            MyVariables.level =  levels[row]
+        }
     }
-
+        
+    
+    
     
     var animals:[String] = ["PIES", "KOT", "ŻYRAFA", "LEW", "NIETOPERZ", "BIZON", "ŻUBR", "NOSOROŻEC", "KANGUR", "KURA", "ORZEŁ", "IGUANA", "PAPUGA", "BŁAZENEK", "SZCZUPAK", "KARP", "WIELORYB"]
     var plants:[String] = ["RÓŻA", "STORCZYK", "TULIPAN", "KAKTUS", "ŚWIERK", "SOSNA", "DĄB", "BRZOZA"]
     var planets:[String] = ["MERKURY", "WENUS", "ZIEMIA", "MARS", "JOWISZ", "SATURN", "URAN", "NEPTUN"]
-    var words:[String] = []
 
     var toGuess:String = ""
     var found: [Character] = []
@@ -42,10 +74,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for i in 0..<animals.count{
-            words.append(animals[i])
-        }
-        
     }
     
     @IBAction func Start(_ sender: UIButton) {
@@ -54,19 +82,144 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
-    @IBAction func Settings(_ sender: UIButton) {
-          let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-          let vc = storyboard.instantiateViewController(withIdentifier: "Settings") as UIViewController
-          vc.modalPresentationStyle = .fullScreen
-          present(vc, animated: true, completion: nil)
-    }
-
     
-    @IBOutlet weak var Lebel: UILabel!
-    
-
-    
+  
     @IBAction func refresh(_ sender: Any) {
+        imagesHide()
+        fails = 0
+        if MyVariables.words.isEmpty {
+            MyVariables.words = animals
+        }
+        if MyVariables.level == "" {
+            MyVariables.level = "Normalny"
+        }
+        toGuess = MyVariables.words[Int.random(in: 0 ..< MyVariables.words.count)]
+        found = []
+        for _ in 0..<toGuess.count{
+            found.append("_")
+        }
+        Text.text = String(found)
+        buttonsEnabled()
+    }
+    
+    
+    @IBAction func settings(_ sender: UIButton) {
+        buttonsDisabled()
+        imagesShow()
+    }
+    
+    func letterClick(letter:Character){
+        if !toGuess.contains(letter){
+            fails += 1
+        }
+        else{
+            for i in 0..<toGuess.count{
+                if toGuess[toGuess.index(toGuess.startIndex, offsetBy: i)] == letter {
+                    found[i] = letter
+                    Text.text = String(found)
+                }
+            }
+            if String(found) == toGuess{
+                Text.text = toGuess + "\nWYGRAŁEŚ"
+                buttonsDisabled()
+            }
+        }
+        switch MyVariables.level {
+        case "Łatwy":
+            easy(fails: fails)
+        case "Normalny":
+            normal(fails: fails)
+        default:
+            difficult(fails: fails)
+        }
+    }
+    
+    func easy(fails:Int){
+        switch fails {
+        case 1:
+            RBase.isHidden = false
+        case 2:
+            LBase.isHidden = false
+        case 3:
+            Vertical.isHidden = false
+        case 4:
+            Support.isHidden = false
+        case 5:
+            Horizontal.isHidden = false
+        case 6:
+            Line.isHidden = false
+        case 7:
+            Head.isHidden = false
+        case 8:
+            Body.isHidden = false
+        case 9:
+            RArm.isHidden = false
+        case 10:
+            LArm.isHidden = false
+        case 11:
+            RLeg.isHidden = false
+        default:
+            LLeg.isHidden = false
+            Text.text = toGuess + "\nPRZEGRAŁEŚ"
+            buttonsDisabled()
+        }
+    }
+    
+    func normal(fails:Int){
+        switch fails {
+        case 1:
+            RBase.isHidden = false
+            LBase.isHidden = false
+        case 2:
+            Vertical.isHidden = false
+        case 3:
+            Support.isHidden = false
+        case 4:
+            Horizontal.isHidden = false
+        case 5:
+            Line.isHidden = false
+        case 6:
+            Head.isHidden = false
+        case 7:
+            Body.isHidden = false
+        case 8:
+            RArm.isHidden = false
+            LArm.isHidden = false
+        default:
+            RLeg.isHidden = false
+            LLeg.isHidden = false
+            Text.text = toGuess + "\nPRZEGRAŁEŚ"
+            buttonsDisabled()
+        }
+    }
+    
+    func difficult(fails:Int){
+        switch fails {
+        case 1:
+            RBase.isHidden = false
+            LBase.isHidden = false
+        case 2:
+            Vertical.isHidden = false
+        case 3:
+            Support.isHidden = false
+            Horizontal.isHidden = false
+        case 4:
+            Line.isHidden = false
+            Head.isHidden = false
+        case 5:
+            Body.isHidden = false
+        case 6:
+            RArm.isHidden = false
+            LArm.isHidden = false
+        default:
+            RLeg.isHidden = false
+            LLeg.isHidden = false
+            Text.text = toGuess + "\nPRZEGRAŁEŚ"
+            buttonsDisabled()
+        }
+    }
+    
+    func imagesHide(){
         LBase.isHidden = true
         RBase.isHidden = true
         Vertical.isHidden = true
@@ -79,13 +232,24 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         RArm.isHidden = true
         LLeg.isHidden = true
         RLeg.isHidden = true
-        fails = 0
-        toGuess = words[Int.random(in: 0 ..< words.count)]
-        found = []
-        for _ in 0..<toGuess.count{
-            found.append("_")
-        }
-        Text.text = String(found)
+    }
+    
+    func imagesShow(){
+        LBase.isHidden = false
+        RBase.isHidden = false
+        Vertical.isHidden = false
+        Horizontal.isHidden = false
+        Support.isHidden = false
+        Line.isHidden = false
+        Head.isHidden = false
+        Body.isHidden = false
+        LArm.isHidden = false
+        RArm.isHidden = false
+        LLeg.isHidden = false
+        RLeg.isHidden = false
+    }
+    
+    func buttonsEnabled(){
         A.isEnabled = true
         Ą.isEnabled = true
         B.isEnabled = true
@@ -122,57 +286,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         Ź.isEnabled = true
         Ż.isEnabled = true
     }
-    
-    func letterClick(letter:Character){
-        if !toGuess.contains(letter){
-            fails += 1
-        }
-        else{
-            for i in 0..<toGuess.count{
-                if toGuess[toGuess.index(toGuess.startIndex, offsetBy: i)] == letter {
-                    found[i] = letter
-                    Text.text = String(found)
-                }
-            }
-            if String(found) == toGuess{
-                Text.text = "WYGRAŁEŚ"
-                buttonsDisabled()
-            }
-        }
-        if fails == 1{
-            RBase.isHidden = false
-            LBase.isHidden = false
-        }
-        if fails == 2{
-            Vertical.isHidden = false
-        }
-        if fails == 3{
-            Support.isHidden = false
-        }
-        if fails == 4{
-            Horizontal.isHidden = false
-        }
-        if fails == 4{
-            Line.isHidden = false
-        }
-        if fails == 5{
-            Head.isHidden = false
-        }
-        if fails == 6{
-            Body.isHidden = false
-        }
-        if fails == 7{
-            RArm.isHidden = false
-            LArm.isHidden = false
-        }
-        if fails == 8{
-            RLeg.isHidden = false
-            LLeg.isHidden = false
-            Text.text = toGuess + "\nPRZEGRANA"
-            buttonsDisabled()
-        }
-    }
-    
     
     func buttonsDisabled(){
         A.isEnabled = false
