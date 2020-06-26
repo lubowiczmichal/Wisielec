@@ -108,6 +108,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         imagesShow()
     }
     
+    @IBAction func color(_ sender: UIButton) {
+        
+    }
+    
+   
     func letterClick(letter:Character){
         if !toGuess.contains(letter){
             fails += 1
