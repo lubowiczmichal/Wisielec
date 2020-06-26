@@ -8,16 +8,44 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    
+    var categories = ["Zwierzęta", "Rośliny", "Planety"]
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categories.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categories[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        Lebel.text = categories[row]
+    }
 
-    var words:[String] = ["PIES", "KOT", "ŻYRAFA", "LEW", "NIETOPERZ", "BIZON", "ŻUBR", "NOSOROŻEC", "KANGUR", "KURA", "ORZEŁ", "IGUANA", "PAPUGA", "BŁAZENEK", "SZCZUPAK", "KARP", "WIELORYB"]
+    
+    var animals:[String] = ["PIES", "KOT", "ŻYRAFA", "LEW", "NIETOPERZ", "BIZON", "ŻUBR", "NOSOROŻEC", "KANGUR", "KURA", "ORZEŁ", "IGUANA", "PAPUGA", "BŁAZENEK", "SZCZUPAK", "KARP", "WIELORYB"]
+    var plants:[String] = ["RÓŻA", "STORCZYK", "TULIPAN", "KAKTUS", "ŚWIERK", "SOSNA", "DĄB", "BRZOZA"]
+    var planets:[String] = ["MERKURY", "WENUS", "ZIEMIA", "MARS", "JOWISZ", "SATURN", "URAN", "NEPTUN"]
+    var words:[String] = []
+
     var toGuess:String = ""
     var found: [Character] = []
     var fails:Int = 0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        for i in 0..<animals.count{
+            words.append(animals[i])
+        }
+        
     }
     
     @IBAction func Start(_ sender: UIButton) {
@@ -26,8 +54,17 @@ class ViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
+    @IBAction func Settings(_ sender: UIButton) {
+          let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+          let vc = storyboard.instantiateViewController(withIdentifier: "Settings") as UIViewController
+          vc.modalPresentationStyle = .fullScreen
+          present(vc, animated: true, completion: nil)
+    }
+
     
+    @IBOutlet weak var Lebel: UILabel!
     
+
     
     @IBAction func refresh(_ sender: Any) {
         LBase.isHidden = true
@@ -131,7 +168,7 @@ class ViewController: UIViewController {
         if fails == 8{
             RLeg.isHidden = false
             LLeg.isHidden = false
-            Text.text = "PRZEGRANA"
+            Text.text = toGuess + "\nPRZEGRANA"
             buttonsDisabled()
         }
     }
@@ -368,4 +405,3 @@ class ViewController: UIViewController {
         Ż.isEnabled = false
     }
 }
-

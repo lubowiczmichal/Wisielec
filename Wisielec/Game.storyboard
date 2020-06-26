@@ -388,17 +388,25 @@
                                     <action selector="refresh:" destination="qkc-pO-aZm" eventType="touchUpInside" id="ynx-nR-WAN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wi8-Kw-wEf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wi8-Kw-wEf">
                                 <rect key="frame" x="207" y="502" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vcc-Bs-13E">
+                                <rect key="frame" x="348" y="44" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="Settings:" destination="qkc-pO-aZm" eventType="touchUpInside" id="M57-5e-Iqj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="wi8-Kw-wEf" firstAttribute="centerX" secondItem="Vrt-oc-0fF" secondAttribute="centerX" id="0Qy-AP-qP0"/>
                             <constraint firstItem="S7x-61-dED" firstAttribute="leading" secondItem="3uJ-AM-ssd" secondAttribute="trailing" constant="-7" id="0m1-t8-bbw"/>
+                            <constraint firstItem="Vcc-Bs-13E" firstAttribute="top" secondItem="Vrt-oc-0fF" secondAttribute="topMargin" id="1J9-OY-xAn"/>
                             <constraint firstItem="Nb9-sp-TN6" firstAttribute="centerX" secondItem="Fta-p6-BBj" secondAttribute="trailing" constant="3" id="3cv-Sn-kpJ"/>
                             <constraint firstItem="oLu-FI-v7U" firstAttribute="top" secondItem="wi8-Kw-wEf" secondAttribute="bottom" constant="100" id="457-D7-Uoa"/>
                             <constraint firstItem="S7x-61-dED" firstAttribute="top" secondItem="vTa-l5-APO" secondAttribute="bottom" constant="-3" id="6yd-Fv-A4z"/>
@@ -415,6 +423,7 @@
                             <constraint firstItem="yAY-Ay-JK2" firstAttribute="top" secondItem="Nb9-sp-TN6" secondAttribute="top" constant="5" id="Pkf-lB-GKT"/>
                             <constraint firstItem="Nb9-sp-TN6" firstAttribute="leading" secondItem="o9f-Y2-4SS" secondAttribute="trailing" constant="-2" id="Qlp-2M-tqf"/>
                             <constraint firstItem="Fta-p6-BBj" firstAttribute="top" secondItem="Nb9-sp-TN6" secondAttribute="bottom" constant="-10" id="XDD-V5-F13"/>
+                            <constraint firstItem="Vcc-Bs-13E" firstAttribute="trailing" secondItem="Vrt-oc-0fF" secondAttribute="trailingMargin" id="YY2-w0-FK2"/>
                             <constraint firstItem="q7d-Gj-WAb" firstAttribute="leading" secondItem="S7x-61-dED" secondAttribute="trailing" constant="-7" id="ZWd-K6-Ycc"/>
                             <constraint firstItem="PYz-Yr-nnP" firstAttribute="top" secondItem="vTa-l5-APO" secondAttribute="bottom" constant="-2" id="dGK-TS-g93"/>
                             <constraint firstItem="yAY-Ay-JK2" firstAttribute="leading" secondItem="Nb9-sp-TN6" secondAttribute="trailing" constant="-2" id="dMh-pl-aIs"/>
@@ -487,7 +496,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wbo-EY-eso" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="243.47826086956525" y="19.419642857142858"/>
+            <point key="canvasLocation" x="539" y="-66"/>
         </scene>
     </scenes>
     <resources>
