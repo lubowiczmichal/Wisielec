@@ -569,9 +569,17 @@
                                     </pickerView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ustawienia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8k-qG-rli">
+                                <rect key="frame" x="154.5" y="244.5" width="105.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="XUH-hC-FPT" firstAttribute="top" secondItem="h8k-qG-rli" secondAttribute="bottom" constant="50" id="HWv-2Z-Lxw"/>
+                            <constraint firstItem="h8k-qG-rli" firstAttribute="centerX" secondItem="poi-m2-3Gp" secondAttribute="centerX" id="KSG-2D-WRv"/>
                             <constraint firstItem="2rl-EB-Qnc" firstAttribute="top" secondItem="poi-m2-3Gp" secondAttribute="top" id="O6W-C1-7nd"/>
                             <constraint firstItem="hpR-fI-j1Q" firstAttribute="top" secondItem="XUH-hC-FPT" secondAttribute="bottom" id="VMc-7i-YkJ"/>
                             <constraint firstItem="2rl-EB-Qnc" firstAttribute="leading" secondItem="poi-m2-3Gp" secondAttribute="leading" id="dG9-WC-5jE"/>
