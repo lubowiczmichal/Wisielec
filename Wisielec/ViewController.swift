@@ -114,10 +114,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
    
     func letterClick(letter:Character){
-        if !toGuess.contains(letter){
-            fails += 1
-        }
-        else{
+        if toGuess.contains(letter){
+            
             for i in 0..<toGuess.count{
                 if toGuess[toGuess.index(toGuess.startIndex, offsetBy: i)] == letter {
                     found[i] = letter
@@ -129,14 +127,20 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                 buttonsDisabled()
             }
         }
-        switch MyVariables.level {
-        case "Łatwy":
-            easy(fails: fails)
-        case "Normalny":
-            normal(fails: fails)
-        default:
-            difficult(fails: fails)
+        else{
+            fails += 1
+            switch MyVariables.level {
+            case "Łatwy":
+                easy(fails: fails)
+                break
+            case "Normalny":
+                normal(fails: fails)
+                break
+            default:
+                difficult(fails: fails)
+            }
         }
+        
     }
     
     func easy(fails:Int){
