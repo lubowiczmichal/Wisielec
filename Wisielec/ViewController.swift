@@ -141,28 +141,41 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func easy(fails:Int){
         switch fails {
+        case 0:
+            break
         case 1:
             RBase.isHidden = false
+            break
         case 2:
             LBase.isHidden = false
+            break
         case 3:
             Vertical.isHidden = false
+            break
         case 4:
             Support.isHidden = false
+            break
         case 5:
             Horizontal.isHidden = false
+            break
         case 6:
             Line.isHidden = false
+            break
         case 7:
             Head.isHidden = false
+            break
         case 8:
             Body.isHidden = false
+            break
         case 9:
             RArm.isHidden = false
+            break
         case 10:
             LArm.isHidden = false
+            break
         case 11:
             RLeg.isHidden = false
+            break
         default:
             LLeg.isHidden = false
             Text.text = toGuess + "\nPRZEGRAŁEŚ"
